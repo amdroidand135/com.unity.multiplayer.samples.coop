@@ -32,6 +32,8 @@ namespace Unity.BossRoom.ApplicationLifecycle
 
         IDisposable m_Subscriptions;
 
+        [SerializeField] string m_FirstLoadingScene = "MainMenu";
+
         protected override void Configure(IContainerBuilder builder)
         {
             base.Configure(builder);
@@ -91,7 +93,7 @@ namespace Unity.BossRoom.ApplicationLifecycle
             DontDestroyOnLoad(gameObject);
             DontDestroyOnLoad(m_UpdateRunner.gameObject);
             Application.targetFrameRate = 120;
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene(m_FirstLoadingScene);
         }
 
         protected override void OnDestroy()
