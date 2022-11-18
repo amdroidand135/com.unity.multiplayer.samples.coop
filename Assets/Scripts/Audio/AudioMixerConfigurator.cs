@@ -46,6 +46,12 @@ namespace Unity.BossRoom.Audio
             m_Mixer.SetFloat(m_MixerVarMusicVolume, GetVolumeInDecibels(ClientPrefs.GetMusicVolume()));
         }
 
+        public void Pause()
+        {
+            m_Mixer.SetFloat(m_MixerVarMainVolume, GetVolumeInDecibels(ClientPrefs.GetMasterVolume()));
+            m_Mixer.SetFloat(m_MixerVarMusicVolume, GetVolumeInDecibels(0f));
+        }
+
         private float GetVolumeInDecibels(float volume)
         {
             if (volume <= 0) // sanity-check in case we have bad prefs data
